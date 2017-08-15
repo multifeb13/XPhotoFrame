@@ -12,7 +12,7 @@ namespace XPhotoFrame
         public App()
         {
             InitializeComponent( );
-
+            Plugin.Media.CrossMedia.Current.Initialize( );
             MainPage = new XPhotoFrame.MainPage( );
         }
 

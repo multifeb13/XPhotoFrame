@@ -7,6 +7,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+[assembly: UsesFeature( "android.hardware.camera", Required = false )]
+[assembly: UsesFeature( "android.hardware.camera.autofocus", Required = false )]
+
 namespace XPhotoFrame.Droid
 {
     [Activity( Label = "XPhotoFrame", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation )]
@@ -20,7 +23,12 @@ namespace XPhotoFrame.Droid
             base.OnCreate( bundle );
 
             global::Xamarin.Forms.Forms.Init( this, bundle );
-            LoadApplication( new App( ) );
+            LoadApplication( new XPhotoFrame.App( ) );
+        }
+
+        public override void OnRequestPermissionsResult( int requestCode, string[] permissions, Permission[] grantResults )
+        {
+            //PermissionsImplementation.Current.OnRequestPermissionsResult( requestCode, permissions, grantResults );
         }
     }
 }
